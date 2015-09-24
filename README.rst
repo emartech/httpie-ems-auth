@@ -23,5 +23,11 @@ Example
 
    $ http --auth-type=ems-auth --auth='escher_key:escher_secret' https://api.emarsys.net/api/v2/internal/12345678/settings
 
+The default Escher credential scope is "eu/suite/ems_request", but you can modify it like this:
+
+.. code-block:: bash
+
+   $ http --auth-type=ems-auth --auth='eu/integration/ems_request/escher_key:escher_secret' https://api.emarsys.net/api/v2/internal/12345678/settings
+
 Check out `HTTPie sessions <https://github.com/jkbrzt/httpie#sessions>`_ if you would like to
 save authentication information between your requests.

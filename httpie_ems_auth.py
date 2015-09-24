@@ -7,12 +7,12 @@ import escherauth
 import datetime
 from urlparse import urlparse
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 __author__ = 'Andras Barthazi'
 __licence__ = 'MIT'
 
 class EmsAuth:
-    def __init__(self, access_id, secret_key):
+    def __init__(self, escher_key, escher_secret):
         options = {
             'algo_prefix': 'EMS',
             'vendor_key': 'EMS',
@@ -20,8 +20,15 @@ class EmsAuth:
             'auth_header_name': 'X-Ems-Auth',
             'date_header_name': 'X-Ems-Date'
         }
-        self.client = {'api_key': access_id, 'api_secret': secret_key}
-        self.escher = escherauth.Escher("eu/suite/ems_request", options)
+
+        credential_scope = "eu/suite/ems_request"
+        if "/" in escher_key:
+            scope = escher_key.split("/")
+            escher_key = scope.pop()
+            credential_scope = "/".join(scope)
+
+        self.client = {'api_key': escher_key, 'api_secret': escher_secret}
+        self.escher = escherauth.Escher(credential_scope, options)
 
     def __call__(self, r):
         now = datetime.datetime.utcnow()
