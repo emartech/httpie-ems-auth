@@ -7,7 +7,7 @@ for Emarsys API requests.
 Installation
 ------------
 
-Be sure that 'HTTPie <http://httpie.org/>`_ is installed, and install this plugin:
+Be sure that `HTTPie <http://httpie.org/>`_ is installed, and install this plugin:
 
 .. code-block:: bash
 
