@@ -34,7 +34,7 @@ save authentication information between your requests.
 
 If you want to ues in python code this example can help:
 
-.. code-block:: 
+.. code-block:: python
    import escherauth
    import datetime
    from urlparse import urlparse
@@ -72,4 +72,4 @@ If you want to ues in python code this example can help:
    f = escher.sign(r, client)
    s = requests.Session()
    
-   s.send(f).json()
+   s.send(f)
