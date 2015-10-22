@@ -32,7 +32,7 @@ The default Escher credential scope is "eu/suite/ems_request", but you can modif
 Check out `HTTPie sessions <https://github.com/jkbrzt/httpie#sessions>`_ if you would like to
 save authentication information between your requests.
 
-If you want to ues in python code this example can help:
+If you want to use in python code this example can help:
    .. code-block:: python
   
       import escherauth
