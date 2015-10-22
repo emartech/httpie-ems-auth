@@ -33,43 +33,45 @@ Check out `HTTPie sessions <https://github.com/jkbrzt/httpie#sessions>`_ if you 
 save authentication information between your requests.
 
 If you want to ues in python code this example can help:
-
-.. code-block:: python
-   import escherauth
-   import datetime
-   from urlparse import urlparse
-   import requests
+   .. code-block:: python
+  
+      import escherauth
+      import datetime
+      from urlparse import urlparse
+      import requests
+      
+      escher_key = 'test'
+      escher_secret = 'test'
+      options = {
+                  'algo_prefix': 'EMS',
+                  'vendor_key': 'EMS',
+                  'hash_algo': 'SHA256',
+                  'auth_header_name': 'X-Ems-Auth',
+                  'date_header_name': 'X-Ems-Date'
+                }
+      
+      credential_scope = "test"
+      
+      if "/" in escher_key:
+          scope = escher_key.split("/")
+          escher_key = scope.pop()
+          credential_scope = "/".join(scope)
+      
+      client = {'api_key': escher_key, 'api_secret': escher_secret}
+      escher = escherauth.Escher(credential_scope, options)
+      
+      url = 'http://test-escher-url.com/api/call/smth'
+      
+      r = requests.PreparedRequest()
+      r.prepare('GET',url)
+      now = datetime.datetime.utcnow()
+      r.headers['X-Ems-Date'] = now.strftime('%Y%m%dT%H%M%SZ')
+      parsed_uri = urlparse(r.url)
+      r.headers['Host'] = parsed_uri.netloc
+      
+      f = escher.sign(r, client)
+      s = requests.Session()
+      
+      s.send(f)
    
-   escher_key = 'test'
-   escher_secret = 'test'
-   options = {
-               'algo_prefix': 'EMS',
-               'vendor_key': 'EMS',
-               'hash_algo': 'SHA256',
-               'auth_header_name': 'X-Ems-Auth',
-               'date_header_name': 'X-Ems-Date'
-             }
-   
-   credential_scope = "test"
-   
-   if "/" in escher_key:
-       scope = escher_key.split("/")
-       escher_key = scope.pop()
-       credential_scope = "/".join(scope)
-   
-   client = {'api_key': escher_key, 'api_secret': escher_secret}
-   escher = escherauth.Escher(credential_scope, options)
-   
-   url = 'http://test-escher-url.com/api/call/smth'
-   
-   r = requests.PreparedRequest()
-   r.prepare('GET',url)
-   now = datetime.datetime.utcnow()
-   r.headers['X-Ems-Date'] = now.strftime('%Y%m%dT%H%M%SZ')
-   parsed_uri = urlparse(r.url)
-   r.headers['Host'] = parsed_uri.netloc
-   
-   f = escher.sign(r, client)
-   s = requests.Session()
-   
-   s.send(f)
+   ..
