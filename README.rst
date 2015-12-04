@@ -19,11 +19,14 @@ After installing, you will see the option ``ems-auth`` under ``--auth-type`` if 
 Example
 -------
 
+Suiteable if you call the API of Suite
+
 .. code-block:: bash
 
    $ http --auth-type=ems-auth --auth='escher_key:escher_secret' https://api.emarsys.net/api/v2/internal/12345678/settings
 
-The default Escher credential scope is "eu/suite/ems_request", but you can modify it like this:
+The default Escher credential scope is "eu/suite/ems_request" which identifies Suite.
+If u are calling another service, you have to alter the credential scope like this:
 
 .. code-block:: bash
 
