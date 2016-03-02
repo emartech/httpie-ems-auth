@@ -7,7 +7,7 @@ import escherauth
 import datetime
 from urlparse import urlparse
 
-__version__ = '0.1.1'
+__version__ = '0.2.1'
 __author__ = 'Andras Barthazi'
 __licence__ = 'MIT'
 
@@ -35,7 +35,9 @@ class EmsAuth:
         r.headers['X-Ems-Date'] = now.strftime('%Y%m%dT%H%M%SZ')
         parsed_uri = urlparse(r.url)
         r.headers['Host'] = parsed_uri.netloc
-        return self.escher.sign(r, self.client)
+        headers_to_sign = map(lambda x:x.lower(),r.headers.keys())
+        headers_to_sign = [header for header in headers_to_sign if header not in ['accept', 'accept-encoding', 'user-agent', 'connection']]
+        return self.escher.sign(r, self.client, headers_to_sign)
 
 class EmsAuthPlugin(AuthPlugin):
 

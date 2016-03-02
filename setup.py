@@ -8,7 +8,7 @@ setup(
     name='httpie-ems-auth',
     description='EmsAuth plugin for HTTPie.',
     long_description=open('README.rst').read().strip(),
-    version='0.1.1',
+    version='0.2.1',
     author='Andras Barthazi',
     author_email='andras@barthazi.hu',
     license='MIT',
