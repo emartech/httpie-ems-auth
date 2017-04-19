@@ -1,12 +1,12 @@
 # httpie-ems-auth
 
-This `HTTPie <http://httpie.org/>`_ auth plugin implements Escher authentication
+This [HTTPie](http://httpie.org/) auth plugin implements Escher authentication
 for Emarsys API requests.
 
 ## Installation
 
 HTTPie is a Python package, you need Python 2.7.* to be installed on your computer first.
-Be sure that `HTTPie <http://httpie.org/>`_ is installed (version 0.9.6, higher versions crash), 
+Be sure that [HTTPie](http://httpie.org/) is installed (version 0.9.6, higher versions crash), 
 and install this plugin:
 
 ```bash
@@ -35,7 +35,7 @@ If u are calling another service, you have to alter the credential scope like th
 http --auth-type=ems-auth --auth=eu/suite/ems_request/escher_key:escher_secret https://api.emarsys.net/api/v2/internal/12345678/settings
 ```
 
-Check out `HTTPie sessions <https://github.com/jkbrzt/httpie#sessions>`, if you would like to
+Check out [HTTPie sessions](https://github.com/jkbrzt/httpie#sessions), if you would like to
 save authentication information between your requests.
 
 If you want to use in python code this example can help:
