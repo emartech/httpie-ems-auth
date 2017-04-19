@@ -36,8 +36,10 @@ path by adding `$HOME/.local/bin` to the PATH (ie. by modifying `~/.profile`: ch
 
 ### Verification
 
-After installing, you will see the option `ems-auth` under `--auth-type` if you run `http --help`.
+After installation, execute `http --help | grep ems-auth`.
 
+Success criteria: the command returns lines containing
+ems-auth.
 
 ## Example
 
