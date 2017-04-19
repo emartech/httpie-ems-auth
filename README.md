@@ -7,18 +7,37 @@ for Emarsys API requests.
 
 HTTPie is a Python package, you need Python 2.7.* to be installed on your computer first.
 Be sure that [HTTPie](http://httpie.org/) is installed (version 0.9.6, higher versions crash), 
-and install this plugin:
+and install this plugin.
+
+### MacOS specific installation
+
+**Important:** do not install HTTPie via Brew.
+
+To install python 2 before installing httpie-ems-auth, run `brew install python`. 
 
 ```bash
 pip install httpie--0.9.6
 pip install httpie-ems-auth
 ```
 
+### Ubuntu 16.04 specific installation
+
+In order to work around some Ubuntu specific errors, httpie and httpie-ems-auth has to be installed for the current
+user only.
+
+```bash
+pip install --user httpie==0.9.6
+pip install --user httpie-ems-auth
+```
+
+This installs the `http` binary to the directory `~/.local/bin`. It is recommended to add this directory to the current user's
+path by adding `$HOME/.local/bin` to the PATH (ie. by modifying `~/.profile`: change the `PATH="$HOME/bin:$PATH"` to
+`PATH="$HOME/bin:$HOME/.local/bin:$PATH"`.)
+
+### Verification
+
 After installing, you will see the option `ems-auth` under `--auth-type` if you run `http --help`.
 
-### MacOS install
-
-Run `brew install python` before installing with `pip`. Don't install HTTPie with Brew.
 
 ## Example
 
