@@ -16,7 +16,7 @@ and install this plugin.
 To install python 2 before installing httpie-ems-auth, run `brew install python`. 
 
 ```bash
-pip install httpie--0.9.6
+pip install httpie==0.9.6
 pip install httpie-ems-auth
 ```
 
